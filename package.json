@@ -1,0 +1,22 @@
+{
+  "name": "app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "rollup src/js/vendor.js -o public/javascripts/vendor.js --format umd --name app"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "node-neurosky": "0.0.1",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "rollup": "^0.62.0"
+  }
+}
