@@ -1,0 +1,128 @@
+/*!
+ * Start Bootstrap - Full Slider (https://startbootstrap.com/template-overviews/full-slider)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-full-slider/blob/master/LICENSE)
+ */
+html, body {
+  margin:0;
+  padding: 0;
+}
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.badge-red{
+  color: #fff;
+  background-color: #cf423b;
+}
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  right: 1%; /* Right align the snackbar */
+  bottom: 3%; /* 3% from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+
+@-webkit-keyframes nineties {
+  0% {
+    -webkit-filter: contrast(100%) brightness(100%) saturate(100%);
+    filter: contrast(100%) brightness(100%) saturate(100%);
+  }  
+  100% {
+    -webkit-filter: contrast(110%) brightness(110%) saturate(130%);
+    filter: contrast(110%) brightness(110%) saturate(130%);
+  }
+}
+
+@-webkit-keyframes xpro {
+  0% {
+    -webkit-filter: sepia(100%);
+    filter: sepia(100%);
+  }  
+  100% {
+    -webkit-filter: sepia(30%);
+    filter: sepia(30%);
+  }
+}
+
+@-webkit-keyframes inkwell {
+  0% {
+    -webkit-filter: contrast(100%) brightness(100%) sepia(100%) grayscale(0%);
+    filter: contrast(100%) brightness(100%) sepia(100%) grayscale(0%);
+  }  
+  100% {
+    -webkit-filter: contrast(110%) brightness(110%) sepia(30%) grayscale(100%);
+    filter: contrast(110%) brightness(110%) sepia(30%) grayscale(100%);
+  }
+}
+
+@-webkit-keyframes aden {
+  0% {
+    -webkit-filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+    filter: contrast(100%) brightness(100%) saturate(100%) hue-rotate(0deg);
+  }  
+  100% {
+    -webkit-filter: contrast(90%) brightness(120%) saturate(85%) hue-rotate(20deg);
+    filter: contrast(90%) brightness(120%) saturate(85%) hue-rotate(20deg);
+  }
+}
+
+.carousel-item.nineties {
+  -webkit-animation: nineties 1s ease-in-out;
+  animation: nineties 1s ease-in-out;
+}
+.carousel-item.aden {
+  -webkit-animation: aden 1s 1s ease-in-out;
+  animation: aden 1s 1s ease-in-out;
+}
+.carousel-item.inkwell {
+  -webkit-animation: inkwell 1s 1s ease-in-out;
+  animation: inkwell 1s 1s ease-in-out;
+}
+.carousel-item.xpro {
+  -webkit-animation: xpro 1s 1s ease-in-out;
+  animation: xpro 1s 1s ease-in-out;
+}

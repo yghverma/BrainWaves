@@ -19,57 +19,30 @@ socket.on('connect', function (data) {
         var msgJson = JSON.parse(JSON.stringify(msg));             
         if(msg.hasOwnProperty('poorSignalLevel')){
             if(msgJson.poorSignalLevel >= 200){
-                document.body.style.backgroundColor = "#FFB6C1";
-                document.getElementById("message").innerHTML = "Device is disconnected";
-                if(null != document.getElementById("attentionDetails")){
-                    document.getElementById("attentionDetails").innerHTML=  "If the Attention value reaches above threadhold page will turn blue else it will remain white once device is connected";
-                }
+                $("#snackbar").empty().text('Device disconnected').addClass('show').delay(1000).removeClass('show');
             }else{
-                document.getElementById("message").innerHTML = "Connected";
-                if(null != document.getElementById("attentionDetails")){
-                    document.getElementById("attentionDetails").innerHTML=  "If the Attention value reaches above threadhold page will turn blue else it will remain white once device is connected";
-                }
+                // $("#snackbar").text("Device connected").addClass('show').delay().removeClass('show');
             }            
         }
-        if(msg.hasOwnProperty('blinkStrength')){            
+        if(msg.hasOwnProperty('blinkStrength')){
+            $("#blinkStrength").text(msgJson.blinkStrength);          
             if(msgJson.blinkStrength>70){
-                window.scrollBy(0,100); 
-                if(null != document.getElementById("blinkStrength")){
-                    document.getElementById("blinkStrength").innerHTML = "Blink Strength "+msgJson.blinkStrength;
-                }
-            }else{
-                if(null != document.getElementById("blinkStrength")){
-                    document.getElementById("blinkStrength").innerHTML = "Blink Strength "+msgJson.blinkStrength;
-                }
+                $('.carousel').carousel('next');
             }
         }
 
         if(msg.hasOwnProperty('eSense')){    
+            $("#attention").text(msgJson.eSense.attention);
             if(msgJson.eSense.attention>40 && msgJson.eSense.attention <50){                
-                document.body.style.backgroundColor = "#FFFF66";
-                if(null != document.getElementById("attention")){
-                    document.getElementById("attention").innerHTML = "Attention :"+msgJson.eSense.attention;
-                }
+                $('.carousel-item').removeClass('nineties xpro inkwell aden').addClass('nineties');
             }else if(msgJson.eSense.attention>50 && msgJson.eSense.attention <60){
-                document.body.style.backgroundColor = "#FFFF33";
-                if(null != document.getElementById("attention")){
-                    document.getElementById("attention").innerHTML = "Attention :"+msgJson.eSense.attention;
-                }
+                $('.carousel-item').removeClass('nineties xpro inkwell aden').addClass('xpro');
             }else if(msgJson.eSense.attention>60 && msgJson.eSense.attention <70){
-                document.body.style.backgroundColor = "yellow";
-                if(null != document.getElementById("attention")){
-                    document.getElementById("attention").innerHTML = "Attention :"+msgJson.eSense.attention;
-                }
+                $('.carousel-item').removeClass('nineties xpro inkwell aden').addClass('inkwell');
             }else if(msgJson.eSense.attention>70){
-                document.body.style.backgroundColor = "#FFFF00";
-                if(null != document.getElementById("attention")){
-                    document.getElementById("attention").innerHTML = "Attention :"+msgJson.eSense.attention;
-                }
+                $('.carousel-item').removeClass('nineties xpro inkwell aden').addClass('aden');
             }else{
-                document.body.style.backgroundColor = "white";
-                if(null != document.getElementById("attention")){     
-                    document.getElementById("attention").innerHTML = "Attention :"+msgJson.eSense.attention;
-                }
+                $('.carousel-item').removeClass('nineties xpro inkwell aden');
             }
         }
 

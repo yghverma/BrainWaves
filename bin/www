@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
-var neuro = require('../neuroSky');
+var neuro;
 
 /**
  * Get port from environment and store in Express.
@@ -97,17 +97,30 @@ function onListening() {
 /**
  * Establishing SocketIO connection
  */
-io.on('connection', function(client) {  
+if (process.argv[3] && process.argv[3].split('=')[1] === 'true') {
+  neuro = require('../neuroSky');
+}
+io.on('connection', function (client) {
 
-  client.on('join', function(data) {
-      console.log(`Message received:: ${data}`);
+  client.on('join', function (data) {
+    console.log(`Message received:: ${data}`);
   });
-  neuro.on('data', function(data){
-    neuroData = data;
-    console.log(data);
-  })
-  setInterval(function(){
-    io.emit('vann', neuroData);
-  }, 1000);
+  if (process.argv[3] && process.argv[3].split('=')[1] === 'true') {
+    neuro.on('data', function (data) {
+      neuroData = data;
+      console.log(data);
+    })
+    setInterval(function () {
+      io.emit('vann', neuroData);
+    }, 1000);
+  } else {
+    const poor = { poorSignalLevel: Math.floor(Math.random() * (+90 - +10)) + +10 };
+    const sense = { eSense: { attention: Math.floor(Math.random() * (+90 - +10)) + +10 } };
+    const blink = { blinkStrength: Math.floor(Math.random() * (+90 - +10)) + +10 };
+    const responseArr = [poor, sense, blink];
+    setInterval(function () {
+      io.emit('vann', responseArr[Math.floor((Math.random() * 10) % 3)]);
+    }, 2000);
+  }
 
 });
