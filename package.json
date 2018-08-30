@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www -- -isNeuroActive=true",
+    "start": "node ./bin/www -- -isNeuroActive=false",
     "mock": "node ./bin/www -- -isNeuroActive=false",
     "build": "rollup src/js/vendor.js -o public/javascripts/vendor.js --format umd --name app"
   },

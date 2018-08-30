@@ -16,23 +16,26 @@ socket.on('connect', function (data) {
     socket.emit('join', 'Client connected');
 
     socket.on('vann', function (msg) {
-        var msgJson = JSON.parse(JSON.stringify(msg));             
-        if(msg.hasOwnProperty('poorSignalLevel')){
-            if(msgJson.poorSignalLevel >= 200){
-                $("#snackbar").empty().text('Device disconnected').addClass('show').delay(1000).removeClass('show');
-            }else{
-                // $("#snackbar").text("Device connected").addClass('show').delay().removeClass('show');
-            }            
-        }
+        var msgJson = JSON.parse(JSON.stringify(msg));      
+        $('.carousel').carousel('next');       
+        // if(msg.hasOwnProperty('poorSignalLevel')){
+        //     if(msgJson.poorSignalLevel >= 200){
+        //         $("#snackbar").empty().text('Device disconnected').addClass('show').delay(1000).removeClass('show');
+        //     }else{
+        //         // $("#snackbar").text("Device connected").addClass('show').delay().removeClass('show');
+        //     }            
+        // }
         if(msg.hasOwnProperty('blinkStrength')){
-            $("#blinkStrength").text(msgJson.blinkStrength);          
-            if(msgJson.blinkStrength>70){
-                $('.carousel').carousel('next');
-            }
+            $("#blinkStrength").text(msgJson.blinkStrength);
+            $("#snackbar").empty().text('Blink detected: Next slide');        
+            // if(msgJson.blinkStrength>70){
+            //     $('.carousel').carousel('next');
+            // }
         }
 
         if(msg.hasOwnProperty('eSense')){    
             $("#attention").text(msgJson.eSense.attention);
+            $("#snackbar").empty().text('Attention changed: Next slide');        
             if(msgJson.eSense.attention>40 && msgJson.eSense.attention <50){                
                 $('.carousel-item').removeClass('nineties xpro inkwell aden').addClass('nineties');
             }else if(msgJson.eSense.attention>50 && msgJson.eSense.attention <60){

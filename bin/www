@@ -117,10 +117,10 @@ io.on('connection', function (client) {
     const poor = { poorSignalLevel: Math.floor(Math.random() * (+90 - +10)) + +10 };
     const sense = { eSense: { attention: Math.floor(Math.random() * (+90 - +10)) + +10 } };
     const blink = { blinkStrength: Math.floor(Math.random() * (+90 - +10)) + +10 };
-    const responseArr = [poor, sense, blink];
+    const responseArr = [sense, blink];
     setInterval(function () {
-      io.emit('vann', responseArr[Math.floor((Math.random() * 10) % 3)]);
-    }, 2000);
+      io.emit('vann', responseArr[Math.floor((Math.random() * 10) % 2)]);
+    }, 7000);
   }
 
 });

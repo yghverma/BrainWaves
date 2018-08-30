@@ -32,8 +32,8 @@ html, body {
   padding: 16px; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  right: 1%; /* Right align the snackbar */
-  bottom: 3%; /* 3% from the bottom */
+  right: 2%; /* Right align the snackbar */
+  bottom: 5%; /* 3% from the bottom */
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
