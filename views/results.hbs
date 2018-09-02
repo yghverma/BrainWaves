@@ -1,65 +1,71 @@
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Demo</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Zero UI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+      aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <span class="badge badge-red mr-2 p-2">Blink:<span id="blinkStrength" class="ml-1"></span></span>
-            </li>
-            <li class="nav-item">
-              <span class="badge badge-red p-2">Attention:<span id="attention" class="ml-1"></span></span>
-            </li>
-            <li class="nav-item">
-              <a href="/results">Summary</a>
-            </li>
-          </ul>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="/results" class="text-white ml-3"><span class="badge p-2">Summary</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Summary</h1>
+  <p class="lead">Data gathered plots attention and blink plots for the three slides users viewed</p>
+</div>
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Buddha</h4>
+      </div>
+      <div class="card-body p-0">
+        <img class="w-100" srcset="./images/buddha.jpg" src="./images/buddha.jpg" />
+        <div class="text-center">
+          <span class="buddha-chart" id="blink" data-percent="45"><span class="percent"></span></span>
+          <span class="buddha-chart" id="attention" data-percent="56"><span class="percent"></span></span>
+          <script>
+            $(function () {
+              $('.buddha-chart#blink').easyPieChart({
+                barColor: "#4caf50",
+                onStep: function (from, to, percent) {
+                  $(this.el).find('.percent').text(Math.round(percent));
+                }
+              });
+            });
+            $(function () {
+              $('.buddha-chart#attention').easyPieChart({
+                barColor: "blue",
+                onStep: function (from, to, percent) {
+                  $(this.el).find('.percent').text(Math.round(percent));
+                }
+              });
+            });
+          </script>
         </div>
       </div>
-    </nav>
-
-    <header>
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('./images/buddha.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>First Slide</h3>
-              <p>This is a description for the first slide.</p>
-            </div>
-          </div>
-          <!-- Slide Two - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('./images/landscape.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Second Slide</h3>
-              <p>This is a description for the second slide.</p>
-            </div>
-          </div>
-          <!-- Slide Three - Set the background image for this slide in the line below -->
-          <div class="carousel-item" style="background-image: url('./images/meditation.jpg')">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Third Slide</h3>
-              <p>This is a description for the third slide.</p>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Landscape</h4>
       </div>
-    </header>
-    <div id="snackbar" class="show">Device connected</div>
+      <div class="card-body p-0">
+        <img class="w-100" srcset="./images/landscape.jpg" src="./images/landscape.jpg" />
+      </div>
+    </div>
+    <div class="card mb-4 box-shadow">
+      <div class="card-header">
+        <h4 class="my-0 font-weight-normal">Meditation</h4>
+      </div>
+      <div class="card-body p-0">
+        <img class="w-100" srcset="./images/meditation.jpg" src="./images/meditation.jpg" />
+      </div>
+    </div>
+  </div>
+</div>
