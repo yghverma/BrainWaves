@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a href="/results" class="text-white ml-3"><span class="badge p-2">Summary</span></a>
+          <a href="/results" class="text-white"><span class="badge p-2">Summary</span></a>
         </li>
       </ul>
     </div>
@@ -17,54 +17,43 @@
 </nav>
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
   <h1 class="display-4">Summary</h1>
-  <p class="lead">Data gathered plots attention and blink plots for the three slides users viewed</p>
+  <p class="lead">Brain waves <span id="user" class="d-none"></span> <span id="location" class="d-none"></span> are detailed below: </p>
 </div>
 <div class="container">
-  <div class="card-deck mb-3 text-center">
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Buddha</h4>
-      </div>
-      <div class="card-body p-0">
-        <img class="w-100" srcset="./images/buddha.jpg" src="./images/buddha.jpg" />
-        <div class="text-center">
-          <span class="buddha-chart" id="blink" data-percent="45"><span class="percent"></span></span>
-          <span class="buddha-chart" id="attention" data-percent="56"><span class="percent"></span></span>
-          <script>
-            $(function () {
-              $('.buddha-chart#blink').easyPieChart({
-                barColor: "#4caf50",
-                onStep: function (from, to, percent) {
-                  $(this.el).find('.percent').text(Math.round(percent));
-                }
-              });
-            });
-            $(function () {
-              $('.buddha-chart#attention').easyPieChart({
-                barColor: "blue",
-                onStep: function (from, to, percent) {
-                  $(this.el).find('.percent').text(Math.round(percent));
-                }
-              });
-            });
-          </script>
+  <div class="row mb-5">
+    <div class="col-md-12 p-0">
+      <div class="card">
+        <div class="card-body">
+          <canvas id="chLine" height="100"></canvas>
         </div>
       </div>
     </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Landscape</h4>
+  </div>
+  <div class="row">
+    <div class="card-deck mb-3 text-center">
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Buddha</h4>
+        </div>
+        <div class="card-body p-0">
+          <img class="w-100" srcset="./images/buddha.jpg" src="./images/buddha.jpg" />
+        </div>
       </div>
-      <div class="card-body p-0">
-        <img class="w-100" srcset="./images/landscape.jpg" src="./images/landscape.jpg" />
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Landscape</h4>
+        </div>
+        <div class="card-body p-0">
+          <img class="w-100" srcset="./images/landscape.jpg" src="./images/landscape.jpg" />
+        </div>
       </div>
-    </div>
-    <div class="card mb-4 box-shadow">
-      <div class="card-header">
-        <h4 class="my-0 font-weight-normal">Meditation</h4>
-      </div>
-      <div class="card-body p-0">
-        <img class="w-100" srcset="./images/meditation.jpg" src="./images/meditation.jpg" />
+      <div class="card mb-4 box-shadow">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">Meditation</h4>
+        </div>
+        <div class="card-body p-0">
+          <img class="w-100" srcset="./images/meditation.jpg" src="./images/meditation.jpg" />
+        </div>
       </div>
     </div>
   </div>
