@@ -114,6 +114,7 @@ io.on('connection', function (client) {
       io.emit('vann', neuroData);
     }, 1000);
   } else {
+    console.log('mock');
     const poor = { poorSignalLevel: Math.floor(Math.random() * (+90 - +10)) + +10 };
     const sense = { eSense: { attention: Math.floor(Math.random() * (+90 - +10)) + +10 } };
     const blink = { blinkStrength: Math.floor(Math.random() * (+90 - +10)) + +10 };

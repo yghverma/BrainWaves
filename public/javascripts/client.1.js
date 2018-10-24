@@ -11,7 +11,7 @@ socket.on('connect', function (data) {
     socket.on('vann', function (msg) {
 
         var msgJson = JSON.parse(JSON.stringify(msg));     
-        
+        /*
         if(msg.hasOwnProperty('poorSignalLevel')){
             if(msgJson.poorSignalLevel >= 200){
                 document.body.style.backgroundColor = "#FFB6C1";
@@ -51,6 +51,6 @@ socket.on('connect', function (data) {
         
         document.getElementById("blinkStrength").innerHTML = blinkStrengthvar;
         document.getElementById("attention").innerHTML = attentionMeditationVar;
-
+        */
     });
 });

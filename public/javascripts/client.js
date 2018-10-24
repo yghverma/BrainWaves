@@ -1,10 +1,12 @@
+var socket = io.connect('http://localhost:3000');
+
 var waveTicker = function (data) {
     if (data.hasOwnProperty('blinkStrength')) {
         $('#blinkStrength').text(data.blinkStrength);
         $('#snackbar').empty().text('Blink detected: Next slide');
-        // if(data.blinkStrength>70){
-        //     $('.carousel').carousel('next');
-        // }
+        if(data.blinkStrength>50){
+            $('.carousel').carousel('next');
+        }
     }
 
     if (data.hasOwnProperty('eSense')) {
@@ -84,21 +86,46 @@ var drawGraph = function (arr) {
     }
 };
 
-var database = firebase.database();
-firebase.database().ref('waves').on('value', function (data) {
+// var database = firebase.database();
+// firebase.database().ref('waves').on('value', function (data) {
+//     var timer;
+//     var index = 0;
+//     var wavesArr = data.val();
+
+//     clearInterval(timer);
+
+//     drawGraph(wavesArr);
+
+//     timer = setInterval(function () {
+//         $('.carousel').carousel('next');
+//         if (index >= wavesArr.length) {
+//             index = 0;
+//         }
+//         waveTicker(wavesArr[index++]);
+//     }, 3000);
+// });
+
+socket.on('connect', function (data) {
+    socket.emit('join', 'Client connected');
+
     var timer;
     var index = 0;
-    var wavesArr = data.val();
+    var wavesArr;
 
-    clearInterval(timer);
+    socket.on('vann', function (msg) {
+        wavesData = JSON.parse(JSON.stringify(msg)); 
 
-    drawGraph(wavesArr);
+        // clearInterval(timer);
+        // drawGraph(wavesArr);
+        waveTicker(wavesData);
+        // timer = setInterval(function () {
+        //     $('.carousel').carousel('next');
+        //     if (index >= wavesArr.length) {
+        //         index = 0;
+        //     }
+        //     waveTicker(wavesArr[index++]);
+        // }, 3000);
+    });
 
-    timer = setInterval(function () {
-        $('.carousel').carousel('next');
-        if (index >= wavesArr.length) {
-            index = 0;
-        }
-        waveTicker(wavesArr[index++]);
-    }, 3000);
+
 });
